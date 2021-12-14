@@ -1,0 +1,80 @@
+
+import kivy
+import kivymd
+from kivymd.app import MDApp
+from kivy.lang import Builder
+from kivy.core.window import Window
+
+Window.size = (300, 500)
+
+navigation_helper = """
+Screen:
+    NavigationLayout:
+        ScreenManager:
+            Screen:
+                BoxLayout:
+                    orientation: 'vertical'
+                    MDToolbar:
+                        title: "Dashboard"
+                        elevation: 10
+                        left_action_items: [['menu', lambda x: nav_drawer.toggle_nav_drawer()]]
+                    Widget:
+        MDNavigationDrawer:
+            id: nav_drawer
+            BoxLayout:
+                orientation:'vertical'
+                spacing:'8dp'
+                padding:'8dp'
+                
+                
+                Image:
+                    source:'Profile_pic.jpg'
+                
+                MDLabel:
+                    text:'Username'
+                    font_style:'Subtitle1'
+                    size_hint_y:None
+                    height:self.texture_size[1]
+                    
+                MDLabel:
+                    text:'Program_name'
+                    font_style:'Caption'
+                    size_hint_y:None
+                    height:self.texture_size[1]
+                    
+                MDLabel:
+                    text:'Year_of_study'
+                    font_style:'Caption'
+                    size_hint_y:None
+                    height:self.texture_size[1]
+                    
+                MDLabel:
+                    text:'Mail_id'
+                    font_style:'Caption'
+                    size_hint_y:None
+                    height:self.texture_size[1]
+                MDLabel:
+                    text:'Username'
+                    font_style:'Caption'
+                    size_hint_y:None
+                    height:self.texture_size[1]
+                
+                MDLabel:
+                    text:'Password'
+                    font_style:'Caption'
+                    size_hint_y:None
+                    height:self.texture_size[1]
+                
+                ScrollView:
+                    
+"""
+
+
+class dashboard(MDApp):
+
+    def build(self):
+        screen = Builder.load_string(navigation_helper)
+        return screen
+
+
+dashboard().run()
