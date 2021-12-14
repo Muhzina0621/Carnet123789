@@ -1,0 +1,91 @@
+import kivy
+import kivymd
+import kivymd.uix
+from kivymd.app import MDApp
+from kivy.lang import Builder
+from kivy.core.window import Window
+from kivymd.uix.screen import Screen
+from kivymd.uix.button import MDFlatButton
+
+Window.size = (300, 500)
+
+navigation_helper = """
+Screen:
+    NavigationLayout:
+        ScreenManager:
+            Screen:
+                BoxLayout:
+                    orientation: 'vertical'
+                    MDToolbar:
+                        title: "Dashboard"
+                        elevation: 10
+                        left_action_items: [['menu', lambda x: nav_drawer.toggle_nav_drawer()]]
+                    Widget:
+        MDNavigationDrawer:
+            id: nav_drawer
+            BoxLayout:
+                orientation:'vertical'
+                spacing:'8dp'
+                padding:'8dp'
+                
+                
+                Image:
+                    source:'Profile_pic.jpg'
+                
+                MDLabel:
+                    text:'Username'
+                    font_style:'Subtitle1'
+                    size_hint_y:None
+                    height:self.texture_size[1]
+                    
+                MDLabel:
+                    text:'Program_name'
+                    font_style:'Caption'
+                    size_hint_y:None
+                    height:self.texture_size[1]
+                    
+                MDLabel:
+                    text:'Year_of_study'
+                    font_style:'Caption'
+                    size_hint_y:None
+                    height:self.texture_size[1]
+                    
+                MDLabel:
+                    text:'Mail_id'
+                    font_style:'Caption'
+                    size_hint_y:None
+                    height:self.texture_size[1]
+                MDLabel:
+                    text:'Username'
+                    font_style:'Caption'
+                    size_hint_y:None
+                    height:self.texture_size[1]
+                
+                MDLabel:
+                    text:'Password'
+                    font_style:'Caption'
+                    size_hint_y:None
+                    height:self.texture_size[1]
+                
+                ScrollView:
+                    
+"""
+
+
+class dashboard(MDApp):
+
+    def build(self):
+        screen = Builder.load_string(navigation_helper)
+        b0 = MDFlatButton(pos_hint={'center_x': 0.5, 'center_y': .75}, size_hint=(.1, .1),text= 'subjects')
+        b1 = MDFlatButton(pos_hint={'center_x': .5, 'center_y': .5}, size_hint=(.1, .1),text= 'Discussions')
+        b2 = MDFlatButton(pos_hint={'center_x': .5, 'center_y': .25}, size_hint=(.1, .1),text= 'Peer meets')
+        b3 = MDFlatButton(pos_hint={'center_x': .5, 'center_y': .1}, size_hint=(.1, .1),text= 'Reminders')
+        screen.add_widget(b0)
+        screen.add_widget(b1)
+        screen.add_widget(b2)
+        screen.add_widget(b3)
+
+        return screen
+
+
+dashboard().run()
