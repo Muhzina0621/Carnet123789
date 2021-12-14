@@ -1,0 +1,42 @@
+import kivy 
+      
+
+from kivy.app import App 
+kivy.require('1.9.1') 
+from kivy.uix.button import Button
+from kivy.uix.textinput import TextInput 
+from kivy.uix.boxlayout import BoxLayout 
+from kivy.uix.image import Image    
+from kivy.config import Config
+  
+# 0 being off 1 being on as in true / false 
+# you can use 0 or 1 && True or False 
+Config.set('graphics', 'resizable', True)
+  
+  
+# Create the App class 
+class BTNTEXTApp(App): 
+  
+    # defining build() 
+    def build(self): 
+  
+                # Telling orientation 
+        b = BoxLayout(orientation ='vertical', ) 
+  
+        # Adding the text input 
+        t=self.img = Image(source ='logo.png') 
+  
+        # Adding Button and styling
+        f = Button(text ="Carnet!", 
+                   font_size ="20sp", 
+                   background_color =(1, 1, 1, 1), 
+                   color =(1, 1, 1, 1) )
+  
+        b.add_widget(t) 
+        b.add_widget(f) 
+           
+        return b 
+  
+# Run the App 
+if __name__ == "__main__": 
+    BTNTEXTApp().run() 
